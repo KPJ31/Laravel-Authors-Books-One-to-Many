@@ -9,7 +9,7 @@
                     @csrf
 
                     <div class="mb-3">
-                        <lable for="title" class="form-label">Title: </lable>
+                        <label for="title" class="form-label">Title: </label>
                         <input id="title" name="title" type="text" value="{{ old('title') }}" class="form-control" placeholder="Book Title" required>
                         @error('title')
                             <span class="text-danger">{{ $message }}</span>
@@ -29,13 +29,13 @@
                         <select id="author_id" name="author_id" class="form-control" required>
                             <option value="">Select Author</option>
                             @foreach($authors as $author)
-                                <option value="{{ $author->id }}" {{ old('author_id') == $author->id ? 'selected' : '' }}>
+                                <option value="{{ $author->id }}" @selected(old('author_id') == $author->id)>
                                     {{ $author->name }}
                                 </option>
                             @endforeach
                         </select>
-                        @error('author_id') 
-                            <span class="text-danger">{{ $message }}</span> 
+                        @error('author_id')
+                            <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 

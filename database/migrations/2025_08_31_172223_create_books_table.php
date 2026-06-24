@@ -15,10 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->year('year');
-            $table->unsignedBigInteger('author_id');
+            $table->foreignId('author_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
-
-            $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
         });
     }
 

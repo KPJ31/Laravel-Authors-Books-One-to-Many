@@ -11,7 +11,7 @@
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title:</label>
-                    <input id="title" name="title" type="text" value="{{ $book->title }}" class="form-control" required>
+                    <input id="title" name="title" type="text" value="{{ old('title', $book->title) }}" class="form-control" required>
                     @error('title') 
                         <span class="text-danger">{{ $message }}</span> 
                     @enderror
@@ -19,16 +19,25 @@
 
                 <div class="mb-3">
                     <label for="year" class="form-label">Year:</label>
-                    <input id="year" name="year" type="number" value="{{ $book->year }}" class="form-control"  placeholder="yyyy" min="1000" max="9999" required>
+                    <input id="year" name="year" type="number" value="{{ old('year', $book->year) }}" class="form-control"  placeholder="yyyy" min="1000" max="9999" required>
                     @error('year')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label for="author" class="form-label">Author:</label>
-                    <lable class="form-label">{{ $book->author->name }}</lable>
-                    <input type="hidden" name="author_id" value="{{ $book->author_id }}">
+                    <label for="author_id" class="form-label">Author:</label>
+                    <select id="author_id" name="author_id" class="form-control" required>
+                        <option value="">Select Author</option>
+                        @foreach($authors as $author)
+                            <option value="{{ $author->id }}" @selected(old('author_id', $book->author_id) == $author->id)>
+                                {{ $author->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('author_id')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="text-center">

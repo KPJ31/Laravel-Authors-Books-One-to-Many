@@ -24,15 +24,11 @@
                             <td>{{ $author->name }}</td>
                             <td>{{ $author->email }}</td>
                             <td>
-                                @if($author->book->count() > 0)
-                                    <ul class="mb-0">
-                                        @foreach($author->book as $book)
-                                            <li>{{ $book->title }}</li>
-                                        @endforeach
-                                    </ul>
-                                @else
-                                    <span class="text-muted">No Books</span>
-                                @endif
+                                @forelse($author->books as $book)
+                                    <div>{{ $book->title }}</div>
+                                @empty
+                                    <span class="text-muted">No books</span>
+                                @endforelse
                             </td>
                             <td>
                                 <a href="{{ route('authors.show', $author->id) }}" class="btn btn-primary btn-sm">Show</a>
@@ -44,7 +40,10 @@
                                 </form>
                             </td>
                         </tr>
-                        @empty
+                    @empty
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">No authors found</td>
+                        </tr>
                     @endforelse
                 </tbody>
             </table>

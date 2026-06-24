@@ -9,7 +9,7 @@
                     @csrf
 
                     <div class="mb-3">
-                        <lable for="name" class="form-label">Name: </lable>
+                        <label for="name" class="form-label">Name: </label>
                         <input id="name" name="name" type="text" value="{{ old('name') }}" class="form-control" placeholder="Full Name" required>
                         @error('name')
                             <span class="text-danger">{{ $message }}</span>

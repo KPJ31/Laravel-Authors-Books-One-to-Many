@@ -11,7 +11,7 @@
 
                 <div class="mb-3">
                     <label for="name" class="form-label">Name:</label>
-                    <input id="name" name="name" type="text" value="{{ $author->name }}" class="form-control" required>
+                    <input id="name" name="name" type="text" value="{{ old('name', $author->name) }}" class="form-control" required>
                     @error('name') 
                         <span class="text-danger">{{ $message }}</span> 
                     @enderror
@@ -19,25 +19,10 @@
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email:</label>
-                    <input id="email" name="email" type="email" value="{{ $author->email }}" class="form-control" required>
+                    <input id="email" name="email" type="email" value="{{ old('email', $author->email) }}" class="form-control" required>
                     @error('email') 
                         <span class="text-danger">{{ $message }}</span> 
                     @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="book" class="form-label">Books:</label>
-                    <lable class="form-label">
-                        @if($author->book->count() > 0)
-                            <ul class="mb-0">
-                                @foreach($author->book as $book)
-                                    <li>{{ $book->title }}</li>
-                                @endforeach
-                            </ul>
-                        @else
-                            <span class="text-muted">No Books</span>
-                         @endif
-                    </lable>
                 </div>
 
                 <div class="text-center">

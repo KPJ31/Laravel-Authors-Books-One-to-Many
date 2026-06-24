@@ -6,30 +6,25 @@
             <div class="card p-4 shadow">
                 <h1 class="mb-4 text-center fw-bold">Author Details</h1>
                 <div class="mb-3">
-                    <b class="fs-5">Employee Name:</b>
-                    <lable class="fs-5">{{ $author->name }}</lable>
+                    <b class="fs-5">Author Name:</b>
+                    <label class="fs-5">{{ $author->name }}</label>
                 </div>
 
                 <div class="mb-3">
                     <b class="fs-5">Email:</b>
-                    <lable class="fs-5">{{ $author->email }}</lable>
+                    <label class="fs-5">{{ $author->email }}</label>
                 </div>
 
                 <div class="mb-3">
                     <b class="fs-5">Books:</b>
-                    <lable class="fs-5">
-                        @if($author->book->count() > 0)
-                            <ul class="mb-0">
-                                @foreach($author->book as $book)
-                                    <li>{{ $book->title }}</li>
-                                @endforeach
-                            </ul>
-                        @else
-                            <span class="text-muted">No Books</span>
-                         @endif
-                    </lable>
+                    <div class="fs-5">
+                        @forelse($author->books as $book)
+                            <div>{{ $book->title }}</div>
+                        @empty
+                            <span class="text-muted">No books</span>
+                        @endforelse
+                    </div>
                 </div>
-
 
                 <div class="text-center">
                     <a class="btn btn-primary" href="{{ route('authors.index') }}">Back</a>

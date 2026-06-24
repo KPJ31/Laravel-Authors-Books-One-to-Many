@@ -13,7 +13,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Title</th>
                         <th scope="col">Year</th>
-                        <th scope="col">Author Name</th>
+                        <th scope="col">Author</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -23,7 +23,7 @@
                             <th scope="row">{{ $book->id }}</th>
                             <td>{{ $book->title }}</td>
                             <td>{{ $book->year }}</td>
-                            <td>{{ $book->author->name }}</td>
+                            <td>{{ $book->author?->name ?? 'No author' }}</td>
                             <td>
                                 <a href="{{ route('books.show', $book->id) }}" class="btn btn-primary btn-sm">Show</a>
                                 <a href="{{ route('books.edit', $book->id) }}" class="btn btn-warning btn-sm">Edit</a>
@@ -34,7 +34,10 @@
                                 </form>
                             </td>
                         </tr>
-                        @empty
+                    @empty
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">No books found</td>
+                        </tr>
                     @endforelse
                 </tbody>
             </table>

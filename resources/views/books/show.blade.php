@@ -7,17 +7,17 @@
                 <h1 class="mb-4 text-center fw-bold">Book Details</h1>
                 <div class="mb-3">
                     <b class="fs-5">Book Title:</b>
-                    <lable class="fs-5">{{ $book->title }}</lable>
+                    <label class="fs-5">{{ $book->title }}</label>
                 </div>
 
                 <div class="mb-3">
                     <b class="fs-5">Year:</b>
-                    <lable class="fs-5">{{ $book->year }}</lable>
+                    <label class="fs-5">{{ $book->year }}</label>
                 </div>
 
                 <div class="mb-3">
                     <b class="fs-5">Author:</b>
-                    <lable class="fs-5">{{ $book->author->name }}</lable>
+                    <label class="fs-5">{{ $book->author?->name ?? 'No author' }}</label>
                 </div>
 
 
